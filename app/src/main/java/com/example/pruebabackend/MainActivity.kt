@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 // Reemplaza con la IP correcta
-                val url = URL("http://10.195.179.198:5000/solve")
+                val url = URL("https://pruebabackend-1.onrender.com")
 
                 // Crea el objeto JSON
                 val jsonInput = JSONObject().apply { put("sum", sum) }

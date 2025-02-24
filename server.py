@@ -5,7 +5,7 @@ pymzn.config['minizinc'] = r"C:\Program Files\MiniZinc\minizinc.exe"
 
 app = Flask(__name__)
 
-@app.route('/solve', methods=['POST'])
+@app.route('/solve', methods=['GET', 'POST'])
 def solve():
     try:
         # Recibir datos JSON de la app Android
@@ -34,6 +34,12 @@ def solve():
 
     except Exception as e:
         return jsonify({"error": str(e)})
+def handle_request():
+    if request.method == 'GET':
+        return jsonify({"error": "Usa POST"}), 405  # Puedes cambiarlo para manejar GET si lo deseas
+    elif request.method == 'POST':
+        data = request.json  # Procesar datos del POST
+        return jsonify({"message": "POST recibido", "data": data})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
