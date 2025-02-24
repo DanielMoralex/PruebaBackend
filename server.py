@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import pymzn
 
-pymzn.config['minizinc'] = r"C:\Program Files\MiniZinc\minizinc.exe"
+pymzn.config['minizinc'] = 'minizinc' 
 
 app = Flask(__name__)
 
